@@ -1,0 +1,10 @@
+users/
+database/
+.idea/
+__pycache__/
+venv/
+parser/database/
+parser/data/
+parser/backup/
+parser/.idea/
+parser/__pycache__/
