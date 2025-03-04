@@ -1,8 +1,5 @@
 import datetime as dt
 
-class settings():
-    TOKEN = '6002429479:AAFCmsTfmLYkQ-gnt4MImb3Za6TRJd9tHzQ'
-
 class KB_MAIN_TEXT():
     hour = int(dt.datetime.now().hour)
     hello = 'Доброе утро' if 5 <= hour < 12 else 'Добрый день' if 12 <= hour < 18 else 'Добрый вечер' if 18 <= hour < 22 else 'Доброй ночи'
