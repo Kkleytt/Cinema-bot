@@ -13,7 +13,7 @@ from keyboards import kb  #Клавиатуры
 from textbot import text_bot as tx  #Текст
 from misc import misc as mc  #Доп функции
 
-TOKEN = '6002429479:AAFCmsTfmLYkQ-gnt4MImb3Za6TRJd9tHzQ'
+TOKEN = 'xxx' # Токен бота
 storage = MemoryStorage()
 bot = Bot(token=TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
@@ -34,20 +34,6 @@ Year = ""
 Rating = ""
 index = 1
 Search = 'ID'
-
-
-
-# запоминаем chat_id и message_id
-# удаляем сообщение пользователя
-# создаем новое сообщение
-# делаем запрос к БД по chat_id, получаем message_id и удаляем это сообщение
-# Меняем данные message_id в БД по chat_id
-# Отправляем новое сообщение
-#
-#
-#
-#
-#
 
 
 #Обработка команд
@@ -96,25 +82,6 @@ async def start_menu(msg: types.Message):
                 (last_message_info['chat_id'], last_message_info['message_id'], last_message_info['text']))
     db.commit()
     db.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Обработка функции очистки данных
@@ -187,39 +154,6 @@ async def random_action(call: types.CallbackQuery):
         last_send_message = await call.message.answer(text="Выбор разделов очистки", reply_markup=keyboard)
     else:
         last_send_message = await last_send_message.edit_text(text="Выбор разделов очистки", reply_markup=keyboard)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2077,25 +2011,6 @@ async def url_rating(call: types.CallbackQuery):
     db.close()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Обработка функции Поиск
 class SearchState(StatesGroup):
     MODE = State()
@@ -2376,16 +2291,7 @@ async def add_favorit(call: types.CallbackQuery):
     await bot.edit_message_reply_markup(chat_id=call.message.chat.id,
                                     message_id=call.message.message_id,
                                     reply_markup=keyboard)
-
-
-
-
-
-
-
-
-
-
+    
 
 #Обработка Callback-вызовов в меню Развлечения
 @dp.callback_query_handler(text="generation_film")
@@ -2488,14 +2394,7 @@ async def generate_api(call: types.CallbackQuery):
             last_send_message = await last_send_message.edit_text(text=text, reply_markup=keyboard)
     else:
         return False
-
-
-
-
-
-
-
-
+        
 
 #Обработка вызовов в меню Заказ
 class BuyFilm(StatesGroup):
@@ -2560,17 +2459,6 @@ async def film_input(message: types.Message, state: SearchState.NAME):
     db.commit()
     db.close()
     print(f"Заказан фильм - '{film_name}'")
-
-
-
-
-
-
-
-
-
-
-
 
 
 #Обработка вызовов в меню Просмотр
@@ -2675,25 +2563,6 @@ async def back_vision_films_v1(call: types.CallbackQuery):
         last_send_message = await call.message.answer(text=text_for_send[IND], reply_markup=keyboard)
     else:
         last_send_message = await call.message.edit_text(text=text_for_send[IND], reply_markup=keyboard)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #Обработка Callback-вызовов в меню помощи
